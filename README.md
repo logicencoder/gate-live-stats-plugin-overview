@@ -1,44 +1,33 @@
-# Gate.io Live Trading Statistics — WordPress Plugin (Public Overview)
+# Gate.io Live Stats
 
-How the **private WordPress plugin** presents Gate.io live stats on LogicEncoder.com.  
-No PHP source, API keys, or hosting credentials in this repository.
+Public **Gate.io spot trading statistics** on logicencoder.com — live trades, analytics panels, and indexable per-coin SEO pages with Schema.org JSON-LD.
 
-**Live URL:** [logicencoder.com/gate-app/](https://logicencoder.com/gate-app/)  
-**Private implementation:** [gate-live-stats-plugin](https://github.com/logicencoder/gate-live-stats-plugin)
+Private plugin: [logicencoder/gate-live-stats-plugin](https://github.com/logicencoder/gate-live-stats-plugin). Data pipeline: [gate-live-stats-backend](https://github.com/logicencoder/gate-live-stats-backend) — [backend overview](https://github.com/logicencoder/gate-live-stats-backend-overview).
 
----
+## Live dashboard
 
-## Purpose
+**[logicencoder.com/gate-app/](https://logicencoder.com/gate-app/)**
 
-WordPress is where visitors land. The plugin embeds a **multi-coin realtime dashboard** via shortcode, connects the browser to the private FastAPI backend on `ws2.logicencoder.com`, and serves **SSR pages** for SEO (`/gate-app/`, `/gate/{COIN}`) with Schema.org JSON-LD.
+Shortcode **`[gate_dashboard symbol="ETHUSDT"]`** — optional default symbol; same live tape and analytics as the hub page.
 
----
+## Per-coin SEO pages
 
-## System position
+Pretty URLs **[/gate/{SYMBOL}/](https://logicencoder.com/gate/)** served via WordPress `template_redirect` + Node SSR HTML (legacy query form: `/gate-app/?coin=`). SEO hub linked from UI breadcrumbs at [/gate/](https://logicencoder.com/gate/).
 
-```
-Visitor opens page with [gate_dashboard]
-        │
-        ├──► Browser ◄──WebSocket/REST──► FastAPI backend (private, ws2)
-        │
-        └──► Crawler ◄──SSR HTML────────► WordPress template_redirect → Node SSR
-```
+## Visitor experience
 
-Backend overview: [gate-live-stats-backend-overview](https://github.com/logicencoder/gate-live-stats-backend-overview).
+Live WebSocket from `wss://ws2.logicencoder.com/ws` — scroll/freeze trade tape, bot-activity views, pair stats from backend PostgreSQL history.
 
----
+## WordPress admin
 
-## Live dashboard shortcode
+Settings: WebSocket URL, SSR base URL, coin manager, dead-symbol list, Google validation dashboard, IndexNow sitemap queue (15-minute cron), coin sync from API.
 
-`[gate_dashboard symbol="ETHUSDT"]` — same feature set as MEXC: live trades (scroll/freeze), bot activity, analytics panels, coin manager, dead-symbols admin, Google validation dashboard, IndexNow sitemap, REST cache warmup (`gate/v1`).
+## Data flow
+
+Gate.io spot WebSocket → Python ingest → PostgreSQL → `/ws` to browsers + SSR endpoint for crawlers and pretty URLs.
+
+See [REPOS.md](REPOS.md).
 
 ---
 
-## REPOS.md
-
-| Repo | Visibility |
-|------|------------|
-| gate-live-stats-plugin | private (code) |
-| gate-live-stats-plugin-overview | public (this repo) |
-| gate-live-stats-backend | private |
-| gate-live-stats-backend-overview | public |
+**Made by [Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)

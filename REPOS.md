@@ -1,7 +1,8 @@
 # Related repositories
 
-| Repository | Role |
-|------------|------|
-| [gate-live-stats-plugin](https://github.com/logicencoder/gate-live-stats-plugin) | Private WordPress plugin code |
-| [gate-live-stats-backend](https://github.com/logicencoder/gate-live-stats-backend) | Private FastAPI + PostgreSQL + Gate.io WS |
-| [gate-live-stats-backend-overview](https://github.com/logicencoder/gate-live-stats-backend-overview) | Public backend overview |
+| Repository | Visibility | Role |
+|------------|------------|------|
+| [gate-live-stats-plugin](https://github.com/logicencoder/gate-live-stats-plugin) | private | WordPress UI, SSR routing, admin |
+| [gate-live-stats-backend](https://github.com/logicencoder/gate-live-stats-backend) | private | Ingest, DB, WS, SSR data |
+| [gate-live-stats-plugin-overview](https://github.com/logicencoder/gate-live-stats-plugin-overview) | public | **Portfolio product description** (this repo) |
+| [gate-live-stats-backend-overview](https://github.com/logicencoder/gate-live-stats-backend-overview) | public | Backend service link |
