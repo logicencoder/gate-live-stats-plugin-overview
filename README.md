@@ -16,12 +16,6 @@
 | Data | PostgreSQL trade history on backend; WordPress options for coin lists and SEO state |
 | Hosting | WordPress on shared hosting; Python/Node on self-hosted Linux servers |
 
-## Shared hosting, heavy work on the server
-
-Gate.io Live Stats uses the **same split** as [MEXC Live Stats](https://github.com/logicencoder/mexc-live-stats-plugin-overview): WordPress on **shared hosting** renders the public shell, sitemaps, and IndexNow hooks; ingest, aggregation, PostgreSQL, MessagePack fan-out, chart generation, and SSR bundles run on a **self-hosted Linux server**. The browser connects over WebSocket; PHP never becomes the trade database.
-
-**Roughly 700 USDT spot pairs** run on the live Gate install today (the parallel MEXC fleet carries **1,400+**). Visitors still get realtime tapes and rolling analytics in the browser; WordPress mostly **displays and indexes** what the backend already computed. The [MEXC Live Stats overview](https://github.com/logicencoder/mexc-live-stats-plugin-overview) includes Hostinger resource graphs that apply to the same architecture pattern on both products.
-
 ## Live trading app (`/gate-app/`)
 
 The dashboard at [logicencoder.com/gate-app/](https://logicencoder.com/gate-app/) is a **single-page trading console**. Every control below is implemented in the plugin JavaScript (`gateDashboard`); data comes from the self-hosted Gate.io backend over WebSocket and REST.
@@ -216,6 +210,14 @@ Typical workflow after Gate.io lists new pairs: bulk add in Coin Manager → **R
 ## Search discovery (crawlers only)
 
 Humans use **`/gate-app/`**. Separate **SEO URLs** under `/gate/{SYMBOL}/` serve crawler HTML + Schema.org JSON-LD from Node SSR — useful for search, not the interactive product. WordPress `template_redirect` routes crawlers; regular browsers stay on the interactive dashboard unless `?ssr=1` is used for testing.
+
+## Shared hosting headroom (corroboration)
+
+Gate.io Live Stats uses the **same split** as [MEXC Live Stats](https://github.com/logicencoder/mexc-live-stats-plugin-overview): WordPress on **shared hosting** renders the public shell, sitemaps, and IndexNow hooks; ingest, aggregation, PostgreSQL, MessagePack fan-out, chart generation, and SSR bundles run on **self-hosted Linux servers** with async workers. The browser connects over WebSocket; PHP never becomes the trade database.
+
+**Roughly 700 USDT spot pairs** run on the live Gate install (the parallel MEXC fleet carries **1,400+**). Visitors still get realtime tapes and rolling analytics in the browser; WordPress mostly **displays and indexes** what the backend already computed.
+
+Shared-hosting load graphs for this architecture pattern are in the [MEXC Live Stats overview → Shared hosting headroom](https://github.com/logicencoder/mexc-live-stats-plugin-overview#shared-hosting-headroom-corroboration) — corroboration at the end of that doc, after all feature sections.
 
 Private code: [gate-live-stats-plugin](https://github.com/logicencoder/gate-live-stats-plugin) · live data [gate-live-stats-backend](https://github.com/logicencoder/gate-live-stats-backend)
 
