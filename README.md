@@ -20,7 +20,7 @@
 
 Gate.io Live Stats uses the **same split** as [MEXC Live Stats](https://github.com/logicencoder/mexc-live-stats-plugin-overview): WordPress on **shared hosting** renders the public shell, sitemaps, and IndexNow hooks; ingest, aggregation, PostgreSQL, MessagePack fan-out, chart generation, and SSR bundles run on a **self-hosted Linux server**. The browser connects over WebSocket; PHP never becomes the trade database.
 
-**Roughly 800 USDT spot pairs** run on the live Gate install today (the parallel MEXC fleet carries **1,400+**). Visitors still get realtime tapes and rolling analytics in the browser; WordPress mostly **displays and indexes** what the backend already computed. The [MEXC Live Stats overview](https://github.com/logicencoder/mexc-live-stats-plugin-overview) includes Hostinger resource graphs that apply to the same architecture pattern on both products.
+**Roughly 700 USDT spot pairs** run on the live Gate install today (the parallel MEXC fleet carries **1,400+**). Visitors still get realtime tapes and rolling analytics in the browser; WordPress mostly **displays and indexes** what the backend already computed. The [MEXC Live Stats overview](https://github.com/logicencoder/mexc-live-stats-plugin-overview) includes Hostinger resource graphs that apply to the same architecture pattern on both products.
 
 ## Live trading app (`/gate-app/`)
 
@@ -50,15 +50,13 @@ The dashboard at [logicencoder.com/gate-app/](https://logicencoder.com/gate-app/
 
 ### Active Coins picker
 
-- **Symbol count** in the panel title — fleet size from backend bootstrap (~800 USDT pairs on the live install).
+- **Symbol count** in the panel title — fleet size from backend bootstrap (~700 USDT pairs on the live install).
 - **Search** — filters chips by ticker or full name; **×** clears input.
 - **Display mode** — **Ticker**, **Name**, or **Both** on chips; saved in `gate_coin_display_mode` localStorage.
 - **Collapse (−/+)** — hides chip grid, search, and display toggle; state in `gate_panel_collapse`.
 - **Chip grid** — alphabetical USDT pairs; active chip highlighted; one click rebinds all panels and updates the URL bar without reload.
 
 The live app opens on app pages with WordPress chrome hidden: in-app breadcrumb, favorite star and pair title, hero price with direction arrow and mini sparkline, **Active Coins** search and display toggles, favorites row, and the scrollable chip grid for the full fleet.
-
-![Symbol header, favorites, and Active Coins grid on Gate.io Live Stats](assets/live-dashboard.png)
 
 ### TradingView chart
 
