@@ -229,4 +229,49 @@ See [REPOS.md](REPOS.md).
 
 ---
 
+## Feature examples (two per capability)
+
+#### Live dashboard shortcode embed
+1. You add `[gate_dashboard]` or `[gate_dashboard symbol="ETHUSDT"]` to a page and visitors get the full Gate.io dashboard without theme edits.
+2. You publish the page and heavy assets load only where the shortcode appears — the rest of the site stays light.
+
+#### Deep-link, search, and favorites
+1. You open `?coin=BTCUSDT` and the UI jumps straight to Bitcoin with live stats and trades.
+2. You star a coin for the **Favorites** row and filter the grid by typing a ticker or full name.
+
+#### Per-coin SEO pages (`/gate/SYMBOL/`)
+1. You visit `logicencoder.com/gate/DNXUSDT/` and see Schema.org trading data rendered server-side — not an empty shell.
+2. You share a `/gate/` URL and social previews use the correct coin title and canonical link.
+
+#### Market overview and bot analytics
+1. You scan open, high, low, VWAP, and labeled change bars during a fast move on the active coin.
+2. You review bot score, repeat-size, and burst indicators to spot algo-heavy markets.
+
+#### Live trade tape — freeze and export
+1. You freeze the tape with the snowflake button to read a specific print during a spike.
+2. You export the visible feed as **CSV**, **JSON**, or **TXT** for offline analysis.
+
+#### TradingView and collapsible layout
+1. You expand the embedded Gate.io chart for the selected symbol, then collapse panels on a small screen.
+2. Your collapsed state persists on the next visit so you do not rebuild the layout every session.
+
+#### Coin Manager (operator)
+1. You bulk-paste symbols, click **Add all**, then **Reload symbols on server** so subscriptions match your fleet.
+2. You refresh the dead list and flag coins with no trades before promoting them in SEO.
+
+#### Monitor Dashboard and settings (operator)
+1. You watch WebSocket throughput, latency, reconnects, and trend charts from wp-admin without SSH.
+2. You set WebSocket URL, SSR/REST base, update interval, and max favorites on **Settings** once for the whole site.
+
+#### Schema.org validation (operator)
+1. You run **Google Validation Dashboard** for a coin and review JSON-LD keys before announcing a new listing.
+2. You validate Node SSR HTML structure when the public page looks fine but rich results fail.
+
+#### Gate Sitemap and IndexNow (operator)
+1. You confirm `/gate-coins-sitemap.xml` returns a valid urlset and submit it in Google Search Console.
+2. You queue new `/gate/SYMBOL/` URLs for IndexNow and run a batch until pending reaches zero.
+
+
+---
+
 **Made by [Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
