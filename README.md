@@ -2,7 +2,7 @@
 
 ![Gate.io Live Stats — live trading app at logicencoder.com/gate-app](assets/live-dashboard.png)
 
-**Live Gate.io spot statistics** on Logic Encoder — the interactive product lives at **[logicencoder.com/gate-app/](https://logicencoder.com/gate-app/)**, not on static article pages. Open the app, pick any USDT pair from the chip grid (or land with **`?coin=SYMBOL`** such as [DOGEUSDT](https://logicencoder.com/gate-app/?coin=DOGEUSDT)), and get realtime trade tape, bot-activity scoring, TradingView chart, 24h analytics panels, hourly volume chart, favorites, export, and freeze — all in one WordPress-embedded shell. Shortcode **`[gate_dashboard]`** drops the same UI on any page; **`symbol="ETHUSDT"`** sets the default pair.
+**Live Gate.io spot statistics** on Logic Encoder — the interactive dashboard is at **[logicencoder.com/gate-app/](https://logicencoder.com/gate-app/)**. Open the app, pick any USDT pair from the chip grid (or land with **`?coin=SYMBOL`** such as [DOGEUSDT](https://logicencoder.com/gate-app/?coin=DOGEUSDT)), and get realtime trade tape, bot-activity scoring, TradingView chart, 24h analytics panels, hourly volume chart, favorites, export, and freeze — all in one WordPress-embedded shell. Shortcode **`[gate_dashboard]`** drops the same UI on any page; **`symbol="ETHUSDT"`** sets the default pair.
 
 ## Tech stack
 
@@ -207,13 +207,13 @@ Typical workflow after Gate.io lists new pairs: bulk add in Coin Manager → **R
 
 **REST cache warmup** — `POST /wp-json/gate/v1/cache-warmup` lets the backend push refreshed precision and coin metadata into WordPress after a symbol reload.
 
-## Search discovery (crawlers only)
+## Search discovery (crawlers)
 
-Humans use **`/gate-app/`**. Separate **SEO URLs** under `/gate/{SYMBOL}/` serve crawler HTML + Schema.org JSON-LD from Node SSR — useful for search, not the interactive product. WordPress `template_redirect` routes crawlers; regular browsers stay on the interactive dashboard unless `?ssr=1` is used for testing.
+The live trading UI is at **`/gate-app/`**. Separate **SEO URLs** under `/gate/{SYMBOL}/` serve crawler HTML + Schema.org JSON-LD from Node SSR for search indexing. WordPress `template_redirect` routes crawlers; regular browsers stay on the interactive dashboard unless `?ssr=1` is used for testing.
 
 ## Shared hosting headroom
 
-Gate.io Live Stats uses the **same split** as [MEXC Live Stats](https://github.com/logicencoder/mexc-live-stats-plugin-overview): WordPress on **shared hosting** renders the public shell, sitemaps, and IndexNow hooks; ingest, aggregation, PostgreSQL, MessagePack fan-out, chart generation, and SSR bundles run on **self-hosted Linux servers** with async workers. The browser connects over WebSocket; PHP never becomes the trade database.
+Gate.io Live Stats uses the **same split** as [MEXC Live Stats](https://github.com/logicencoder/mexc-live-stats-plugin-overview): WordPress on **shared hosting** renders the public shell, sitemaps, and IndexNow hooks; ingest, aggregation, PostgreSQL, MessagePack fan-out, chart generation, and SSR bundles run on **self-hosted Linux servers** with async workers. The browser connects over WebSocket; tick history lives on the backend.
 
 **Roughly 700 USDT spot pairs** run on the live Gate install (the parallel MEXC fleet carries **1,400+**). Visitors still get realtime tapes and rolling analytics in the browser; WordPress mostly **displays and indexes** what the backend already computed.
 
