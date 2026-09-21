@@ -229,7 +229,7 @@ See [REPOS.md](REPOS.md).
 
 ---
 
-## Feature examples (two per capability)
+## Operator workflows
 
 #### Live dashboard shortcode embed
 1. You add `[gate_dashboard]` or `[gate_dashboard symbol="ETHUSDT"]` to a page and visitors get the full Gate.io dashboard without theme edits.
