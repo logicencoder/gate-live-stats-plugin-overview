@@ -29,7 +29,7 @@ Coin Manager gives the site owner controls for the tracked catalogue, including 
 
 ## Check health and discoverability
 
-Monitoring panels, logs and server information assist with operational questions, while sitemap and indexing controls support the public pages. Structured-data checks help maintain their presentation to search services. Additional readable screenshots are needed to show these areas beyond the single tall hero.
+Monitoring panels, logs and server information assist with operational questions, while sitemap and indexing controls support the public pages. Structured-data checks help maintain their presentation to search services.
 
 ---
 
